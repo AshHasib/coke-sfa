@@ -1,11 +1,15 @@
 package com.example.cokesfa
 
+import android.content.Intent
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v7.app.ActionBar
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.example.cokesfa.adapters.ViewPagerAdapter
 import com.example.cokesfa.fragments.HomeFragment
 import com.example.cokesfa.fragments.OrderFragment
@@ -23,7 +27,21 @@ class MainActivity : AppCompatActivity() {
 
         setupHeader()
 
+
+
+    }
+
+
+    fun setupHeader(){
+        val actionBar:ActionBar?
         val adapter=ViewPagerAdapter(supportFragmentManager)
+
+
+        setSupportActionBar(toolBar)
+
+        actionBar=supportActionBar
+        actionBar!!.setDisplayHomeAsUpEnabled(true)
+        actionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu)
 
 
 
@@ -34,18 +52,33 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.adapter=adapter
         tabLayout.setupWithViewPager(viewPager)
-
     }
 
 
-    fun setupHeader(){
-        val actionBar:ActionBar?
 
-        setSupportActionBar(toolBar)
 
-        actionBar=supportActionBar
-        actionBar!!.setDisplayHomeAsUpEnabled(true)
-        actionBar!!.setHomeAsUpIndicator(R.drawable.ic_menu)
+
+
+
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu,menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item!!.itemId) {
+            R.id.menu_location -> {
+                startActivity(Intent(this,MapActivity::class.java))
+            }
+
+        }
+
+        return true
     }
 
 }

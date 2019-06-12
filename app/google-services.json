@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1079056117418",
+    "firebase_url": "https://coke-sfa.firebaseio.com",
+    "project_id": "coke-sfa",
+    "storage_bucket": "coke-sfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079056117418:android:cb61e4479f65fe53",
+        "android_client_info": {
+          "package_name": "com.example.cokesfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079056117418-cc3b1imi8kmck76p5mu9pdst0kp4at4v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cokesfa",
+            "certificate_hash": "d68a3de36622cce9cfa2dc5dadf96b425125c53a"
+          }
+        },
+        {
+          "client_id": "1079056117418-3u4pddgbra43rr584htq8buamoccks06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCYCqra6yry-DukP2eni032yIgt5HyDM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079056117418-3u4pddgbra43rr584htq8buamoccks06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

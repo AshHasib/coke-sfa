@@ -21,6 +21,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    dexOptions {
+        incremental true
+    }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/font'] } }
 }
 
 dependencies {

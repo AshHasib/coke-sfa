@@ -28,7 +28,8 @@ class MapActivity : FragmentActivity() , OnMapReadyCallback {
         var location=LatLng(23.4714349,91.1414637)
         map.addMarker(MarkerOptions().position(location).title("Coca Cola Factory"))
         map.moveCamera(CameraUpdateFactory.newLatLng(location))
-        map.setMinZoomPreference(10.0f)
+        //map.setMinZoomPreference(10.0f)
+        map.animateCamera(CameraUpdateFactory.zoomTo(15.0f))
     }
 
 }

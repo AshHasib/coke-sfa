@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CokeSFA</string>
+    <string name="login">LOGIN</string>
+    <string name="i_accept_to_the_terms_and_conditions">I accept to the terms and conditions</string>
+    <string name="password">Password</string>
+    <string name="sales_force_automation">Sales Force Automation</string>
+    <string name="email">Email</string>
 </resources>

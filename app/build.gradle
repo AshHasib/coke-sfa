@@ -22,9 +22,7 @@ android {
         }
     }
 
-    dexOptions {
-        incremental true
-    }
+
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/font'] } }
 }
 
@@ -43,4 +41,5 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

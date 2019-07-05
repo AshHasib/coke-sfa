@@ -5,4 +5,5 @@
     <string name="password">Password</string>
     <string name="sales_force_automation">Sales Force Automation</string>
     <string name="email">Email</string>
+    <string name="this_week_s_sale">This week\'s top seller</string>
 </resources>

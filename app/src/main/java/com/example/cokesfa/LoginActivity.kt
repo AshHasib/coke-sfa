@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
             if(isPsr(username,password)) {
                 userSessionManager.createSession(username!!,password!!)
                 startActivity(Intent(this,MainActivity::class.java))
+                finish()
             }
         }
     }

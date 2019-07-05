@@ -24,16 +24,22 @@
 
 
         <TextView
-                android:fontFamily="@font/dm_serif_regular"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/sales_force_automation"
-                android:textSize="26sp"
-                android:textAlignment="center"
-                android:textColor="@color/colorLightDark"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                android:id="@+id/textView"/>
+            android:id="@+id/textView"
+            android:layout_width="359dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/sales_force_automation"
+            android:textAlignment="center"
+            android:textColor="@color/colorLightDark"
+            android:textStyle="bold"
+            android:textSize="26sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <AutoCompleteTextView
                 android:id="@+id/txtLoginEmail"

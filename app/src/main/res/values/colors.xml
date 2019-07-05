@@ -3,9 +3,9 @@
     <color name="colorPrimary">#f44336</color>
     <color name="colorPrimaryDark">#d32f2f</color>
     <color name="colorAccent">#424242</color>
-
     <color name="colorOffWhite">#EFF0F1</color>
     <color name="colorLightDark">#424242</color>
-
-    <color name="colorGreen">#43a047</color>
+    <color name="colorGreen">#66bb6a</color>
+    <color name="colorLightBlack">#212121</color>
+    <color name="cardBackgroundColor">#F1F1F1</color>
 </resources>

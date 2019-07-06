@@ -31,8 +31,8 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+        //The list of all users are loaded from JSON tree
         val userListReference:DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
-
         userListReference.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
 
@@ -47,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
         })
+
 
 
         btnLogin?.setOnClickListener{
@@ -114,14 +115,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-    /**
-     *
-     * Loading users from Firebase User tree
-     */
-
-
-
-
 
     /**
      * Checking if the login data is already entered in the database
@@ -130,12 +123,9 @@ class LoginActivity : AppCompatActivity() {
         var flag=false
 
 
-        list.forEach {
-
-            if(it.email.equals(username) and it.password.equals(password)) {
-                Log.d("PSRLIST","Milse")
-                return true
-            }
+        for(l in list) {
+            if(l.email.equals(username) and l.password.equals(password)) return true
+            //Log.d("PSRLIST",l.email)
         }
 
 

@@ -7,16 +7,18 @@ import android.support.design.button.MaterialButton
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.cokesfa.models.PSR
 import com.example.cokesfa.regex.EmailChecker
 import com.example.cokesfa.regex.PasswordChecker
 import com.example.cokesfa.sessionmanager.UserSessionManager
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
     lateinit var userSessionManager:UserSessionManager
 
+    val list= arrayListOf<PSR>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -27,6 +29,24 @@ class LoginActivity : AppCompatActivity() {
         userSessionManager= UserSessionManager(this)
 
 
+
+
+        val userListReference:DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
+
+        userListReference.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(ds: DataSnapshot) {
+                for(d in ds.children) {
+                    val psr=d.getValue(PSR::class.java)
+                    //Log.d("PSRLIST",psr!!.email)
+                    list.add(psr!!)
+                }
+            }
+
+        })
 
 
         btnLogin?.setOnClickListener{
@@ -51,6 +71,10 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(Intent(this,MainActivity::class.java))
                 finish()
             }
+
+            else {
+                Toast.makeText(this,"Enter correct information",Toast.LENGTH_LONG).show()
+            }
         }
     }
 
@@ -71,7 +95,12 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
 
-        else if (!PasswordChecker(password!!).isValid()) {
+        else if(!PasswordChecker(password!!).isLengthed()) {
+            Toast.makeText(this,"Password must be 8 characters long",Toast.LENGTH_LONG).show()
+            return false
+        }
+
+        else if(!PasswordChecker(password!!).isValid()) {
             Toast.makeText(this,"Enter a password with numbers and letters",Toast.LENGTH_LONG).show()
             return false
         }
@@ -85,6 +114,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
+    /**
+     *
+     * Loading users from Firebase User tree
+     */
 
 
 
@@ -94,7 +127,19 @@ class LoginActivity : AppCompatActivity() {
      * Checking if the login data is already entered in the database
      */
     private fun isPsr(username: String?,password: String?) :Boolean {
-        return true
+        var flag=false
+
+
+        list.forEach {
+
+            if(it.email.equals(username) and it.password.equals(password)) {
+                Log.d("PSRLIST","Milse")
+                return true
+            }
+        }
+
+
+        return flag
     }
 
 }

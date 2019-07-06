@@ -29,4 +29,8 @@ class PasswordChecker ( val password:String) {
 
         return matcher.matches()
     }
+
+    public fun isLengthed():Boolean {
+        return password.length>7
+    }
 }

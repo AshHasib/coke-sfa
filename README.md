@@ -22,3 +22,8 @@ The goal is to build a software for the pre sales representatives that cut order
 * Order cancelling
 * Goal tracking
 * PSR list
+
+
+
+## Sample Images
+<img src="ss1.PNG" alt="No Image">

@@ -11,20 +11,16 @@
             app:cardElevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         <LinearLayout
                 android:background="@drawable/custom_border"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-
             <TextView
                     android:id="@+id/txtPsrName"
                     android:text="John Doe"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:paddingTop="8dp"
                     android:textSize="22dp"
                     android:textColor="@color/colorLightDark"
                     android:layout_width="match_parent"
@@ -35,7 +31,6 @@
                     android:text="Wellington"
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
-                    android:layout_marginTop="4dp"
                     android:textColor="@color/colorLightDark"
                     android:textSize="16dp"
                     android:layout_width="match_parent"

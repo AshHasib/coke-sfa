@@ -6,6 +6,7 @@
     <color name="colorOffWhite">#EFF0F1</color>
     <color name="colorLightDark">#424242</color>
     <color name="colorGreen">#66bb6a</color>
+    <color name="colorIndigo">#039BE5</color>
     <color name="colorLightBlack">#212121</color>
     <color name="cardBackgroundColor">#F1F1F1</color>
 </resources>

@@ -6,8 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
-
     <android.support.design.widget.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
@@ -34,10 +32,12 @@
                 android:focusable="true"
                 app:tabRippleColor="@color/colorPrimaryDark"
                 android:id="@+id/tabLayout"
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabIndicatorColor="@color/colorPrimaryDark"
+                app:tabIndicatorColor="@color/colorGreen"
+                app:tabIndicatorFullWidth="false"
+                app:tabPaddingStart="25dp"
+                app:tabPaddingEnd="25dp"
                 app:tabTextColor="#FFF"
                 app:tabMode="fixed"
                 app:tabGravity="fill">
@@ -55,7 +55,6 @@
             app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
 
     </android.support.v4.view.ViewPager>
-
 
 
 </android.support.constraint.ConstraintLayout>

@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-#CokeSFA
-=======
+
 # CokeSFA
->>>>>>> ac4967d93bde23ee9b9f25befed606f508e7e484
+
 
 An android application made as a university assignment project
 

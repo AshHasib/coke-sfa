@@ -20,14 +20,12 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view:View= inflater.inflate(R.layout.fragment_home,container,false)
+        val v:View= inflater.inflate(R.layout.fragment_home,container,false)
 
-        val yourProgress = view.findViewById<ProgressBar>(R.id.yourProgress)
+        val yourProgress = v.findViewById<ProgressBar>(R.id.yourProgress)
         yourProgress.progressTintList= ColorStateList.valueOf(Color.RED)
 
 
-
-
-        return view
+        return v
     }
 }

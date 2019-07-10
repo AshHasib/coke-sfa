@@ -1,9 +1,15 @@
 package com.example.cokesfa
 
+import android.app.Dialog
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.button.MaterialButton
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -17,39 +23,49 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : AppCompatActivity() {
 
     lateinit var userSessionManager:UserSessionManager
-
     val list= arrayListOf<PSR>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+
+
+
+
+        //If there is no internet, don't show the contents
+        if (!thereIsInternet()) {
+            mainLayout.visibility=View.INVISIBLE
+
+
+            val noInternetDialog=AlertDialog.Builder(this)
+            noInternetDialog.run {
+                setTitle("Warning")
+                setMessage("There is no internet in this device")
+                setPositiveButton("OK", object :DialogInterface.OnClickListener{
+                    override fun onClick(dialog: DialogInterface?, which: Int) {
+                        dialog!!.dismiss()
+                    }
+
+                })
+                show()
+            }
+
+
+        }
+
 
 
         userSessionManager= UserSessionManager(this)
 
 
 
-
         //The list of all users are loaded from JSON tree
-        val userListReference:DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
-        userListReference.addValueEventListener(object :ValueEventListener{
-            override fun onCancelled(p0: DatabaseError) {
+        loadUsers()
 
-            }
-
-            override fun onDataChange(ds: DataSnapshot) {
-                for(d in ds.children) {
-                    val psr=d.getValue(PSR::class.java)
-                    //Log.d("PSRLIST",psr!!.email)
-                    list.add(psr!!)
-                }
-            }
-
-        })
-
-
-
+        
         btnLogin?.setOnClickListener{
             val username=txtLoginEmail.text.toString()
             val password=txtLoginPassword.text.toString()
@@ -57,6 +73,21 @@ class LoginActivity : AppCompatActivity() {
             saveToSession(username,password)
         }
 
+    }
+
+
+
+
+
+    /**
+     * Checking if there is internet or not
+     */
+    public fun thereIsInternet(): Boolean {
+        var connected=false
+        val connectivityManager= getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo=connectivityManager.activeNetworkInfo
+
+        return activeNetworkInfo!=null
     }
 
 
@@ -87,9 +118,39 @@ class LoginActivity : AppCompatActivity() {
 
 
     /**
+     * Loading the list with users from JSON tree
+     */
+    public fun loadUsers() {
+        val userListReference:DatabaseReference = FirebaseDatabase.getInstance().getReference("Users")
+        userListReference.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(ds: DataSnapshot) {
+                for(d in ds.children) {
+                    val psr=d.getValue(PSR::class.java)
+                    //Log.d("PSRLIST",psr!!.email)
+                    list.add(psr!!)
+                }
+            }
+
+        })
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
      * Checking if the login data is valid regex-wise
      */
-    private fun isValid(username: String?,password: String?) : Boolean{
+    private fun isValid(username: String?,password: String?) : Boolean {
 
         if (!EmailChecker(username!!).isValid()) {
             Toast.makeText(this,"Enter valid email",Toast.LENGTH_LONG).show()
@@ -116,12 +177,19 @@ class LoginActivity : AppCompatActivity() {
 
 
 
+
+
+
+
+
+
+
+
+
     /**
      * Checking if the login data is already entered in the database
      */
     private fun isPsr(username: String?,password: String?) :Boolean {
-        var flag=false
-
 
         for(l in list) {
             if(l.email.equals(username) and l.password.equals(password)) return true
@@ -129,7 +197,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-        return flag
+        return false
     }
 
 }

@@ -30,8 +30,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
     //@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -117,7 +115,7 @@ class MainActivity : AppCompatActivity() {
 
 
         adapter.addFragment("Home",HomeFragment())
-        adapter.addFragment("Orders",OrderFragment())
+        adapter.addFragment("Order",OrderFragment())
         adapter.addFragment("PSRs",PSRFragment())
 
         viewPager.adapter=adapter

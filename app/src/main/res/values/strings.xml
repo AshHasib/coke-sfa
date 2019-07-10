@@ -6,4 +6,12 @@
     <string name="sales_force_automation">Sales Force Automation</string>
     <string name="email">Email</string>
     <string name="this_week_s_sale">This week\'s top seller</string>
+    <string name="john_doe">John Doe</string>
+    <string name="cumilla">Cumilla</string>
+    <string name="total_5_orders">Total 5 orders</string>
+    <string name="your_score">Your score</string>
+    <string name="know_more">Know more. . .</string>
+    <string name="visit_website">Visit website</string>
+    <string name="psr_policy">PSR Policy</string>
+    <string name="want_to_know_more_about_your_goals_check_out_the">Want to know more about your goals? Check out the</string>
 </resources>

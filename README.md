@@ -26,4 +26,5 @@ The goal is to build a software for the pre sales representatives that cut order
 
 
 ## Sample Images
-<img src="ss1.PNG" alt="No Image">
+<img src="ss1.PNG" alt="No Image"> <img src="ss2.PNG" alt="No Image"> 
+<img src="ss3.PNG" alt="No Image"> <img src="ss4.PNG" alt="No Image">

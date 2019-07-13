@@ -2,7 +2,7 @@
 # CokeSFA
 
 
-**This is built for learning purposes only and not anyhow under the supervision of Coca Cola or Abdul Monem Limited.**
+**IMPORTANT: This is built for learning purposes only and not anyhow under the supervision of Coca Cola or Abdul Monem Limited.**
 
 An android application made as a university assignment project
 

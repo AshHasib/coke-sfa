@@ -2,10 +2,14 @@ package com.example.cokesfa
 
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.ActionBar
 import android.view.Menu
 import android.view.MenuItem
@@ -17,6 +21,7 @@ import com.example.cokesfa.fragments.OrderFragment
 import com.example.cokesfa.fragments.PSRFragment
 import com.example.cokesfa.sessionmanager.UserSessionManager
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
 
@@ -175,6 +180,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Handling components of dialog box
      */
@@ -187,6 +206,16 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+        val phoneCallBtn = d.findViewById<ImageView>(R.id.btnPhoneCall)
+
+        phoneCallBtn.setOnClickListener{
+            makePhoneCall()
+        }
+
+
+
+
         val btnLogout=d.findViewById<Button>(R.id.btnLogout)
         btnLogout.setOnClickListener {
             userSessionManager.deleteSession()
@@ -195,6 +224,30 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+
+    /**
+     * Making a phone call to demo distributor
+     */
+    private fun makePhoneCall() {
+        val phoneNumber = "tel:01537171186"
+
+        if(ContextCompat.checkSelfPermission(this,android.Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CALL_PHONE),1)
+        }
+        else {
+            startActivity(Intent(Intent.ACTION_CALL, Uri.parse(phoneNumber)))
+        }
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        if(requestCode==1) {
+            if(grantResults.size>0 && grantResults[0]==PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall()
+            }
+        }
     }
 
 

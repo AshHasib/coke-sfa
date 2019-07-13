@@ -17,7 +17,7 @@ class OrderActivity : AppCompatActivity() {
 
     val SELECT_PRODUCT = "Select Product"
     val SET_QUANTITY = "Set Quantity"
-    val SELECT_REGION= "Select Region"
+    val SELECT_REGION = "Select Region"
 
     var counter =0;
 
@@ -76,6 +76,21 @@ class OrderActivity : AppCompatActivity() {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Stacking an order
      */
@@ -122,7 +137,6 @@ class OrderActivity : AppCompatActivity() {
         if(region.equals(SELECT_REGION)) return false
         if(quantity.equals(SET_QUANTITY)) return false
         if(deadLine.isBlank()) return false
-
         else return true
 
     }
@@ -140,7 +154,7 @@ class OrderActivity : AppCompatActivity() {
     /**
      * Loading the spinners in the form
      */
-    public fun loadSpinners() {
+    private fun loadSpinners() {
         val productList = arrayListOf<String>(SELECT_PRODUCT, "Coke", "Fanta", "Sprite", "Kinley")
         val quantityList = arrayListOf<String>(SET_QUANTITY, "2","4", "6", "8", "10", "11", "12")
         val regionList = arrayListOf<String>(SELECT_REGION, "Cumilla", "Rajshahi", "Khulna", "Dhaka", "Chittagong")
@@ -173,6 +187,4 @@ class OrderActivity : AppCompatActivity() {
         txtOptDesc.setText("")
         btnSubmit.setText("SUBMIT")
     }
-
-
 }

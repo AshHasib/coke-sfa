@@ -19,7 +19,9 @@ import com.example.cokesfa.adapters.ViewPagerAdapter
 import com.example.cokesfa.fragments.HomeFragment
 import com.example.cokesfa.fragments.OrderFragment
 import com.example.cokesfa.fragments.PSRFragment
+import com.example.cokesfa.models.PSR
 import com.example.cokesfa.sessionmanager.UserSessionManager
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.jar.Manifest
 
@@ -48,32 +50,11 @@ class MainActivity : AppCompatActivity() {
         setupHeader()
 
 
-        /**
-         * Some dummy checking codes
-
-
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
-
-        ref.addListenerForSingleValueEvent(object:ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                for(snapShot in p0.children) {
-                    val psr=snapShot.getValue(PSR::class.java)
-                    Log.d("PSR",psr!!.name)
-                    Log.d("PSR",psr!!.email)
-                    Log.d("PSR",psr!!.phoneNumber)
-                }
-            }
-
-        })
-
-         */
 
 
     }
+
+
 
 
 

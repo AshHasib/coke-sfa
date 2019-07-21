@@ -15,14 +15,19 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.cokesfa.adapters.ViewPagerAdapter
 import com.example.cokesfa.fragments.HomeFragment
 import com.example.cokesfa.fragments.OrderFragment
 import com.example.cokesfa.fragments.PSRFragment
 import com.example.cokesfa.models.PSR
 import com.example.cokesfa.sessionmanager.UserSessionManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 import java.util.jar.Manifest
 
 class MainActivity : AppCompatActivity() {
@@ -185,6 +190,35 @@ class MainActivity : AppCompatActivity() {
         closeBtn.setOnClickListener{
             d.dismiss()
         }
+
+        val txtYourAccomplishment = d.findViewById<TextView>(R.id.txtYourAccomplishment)
+        val txtYourPercentage = d.findViewById<TextView>(R.id.txtYourWorkPercentage)
+
+
+
+
+        var counter = 0
+        val userEmail = UserSessionManager(this).getUserDetails()
+        val rootName = userEmail.substring(0,userEmail.indexOf("@"))
+        val ref = FirebaseDatabase.getInstance().getReference("Orders").child(rootName)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                for(d in p0.children) {
+                    counter++
+                }
+
+                txtYourAccomplishment.setText("Your Accomplishment: $counter")
+                txtYourPercentage.setText("Work Percentage: ${counter*10}%")
+            }
+
+        })
+
+
+
 
 
 

@@ -150,6 +150,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this,MapActivity::class.java))
             }
 
+            R.id.menu_your_order -> {
+                startActivity(Intent(this,YourOrdersActivity::class.java))
+            }
+
             android.R.id.home -> {
                 //Toast.makeText(this,"Menu",Toast.LENGTH_LONG).show()
                 statsDialog.run {

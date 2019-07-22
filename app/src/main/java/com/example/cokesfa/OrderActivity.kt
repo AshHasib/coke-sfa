@@ -33,7 +33,6 @@ class OrderActivity : AppCompatActivity() {
 
         loadSpinners()
 
-
         btnStack.setOnClickListener {
             stackOrder()
         }
@@ -76,14 +75,9 @@ class OrderActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
-
+    /**
+     * Setting listeners to the Spinners
+     */
 
 
 
@@ -103,6 +97,13 @@ class OrderActivity : AppCompatActivity() {
         val psrEmail = sessionManager.getUserDetails()
         if(isValid(productName,quantity, region, deadLine)) {
 
+            //setTotalPrice(productName,quantity)
+
+            txtUnitPrice.setText("Unit Price: 288 BDT")
+            txtTotalPrice.setText("Total Price: ${288*quantity.toInt()} BDT")
+
+
+
             val order= Order(oId = 1, date = currentDate, deadline = deadLine, psrEmail = psrEmail,productQuantity = quantity,
                 productName = productName,region = region)
 
@@ -121,8 +122,36 @@ class OrderActivity : AppCompatActivity() {
     }
 
 
+    /**
+     * Setting Unit price & Total price
+     */
+    private fun setTotalPrice(productName: String,quantity: String) {
+        val cokePrice: Int = 25*12
+        val spritePrice: Int = 24*12
+        val fantaPrice: Int = 24*12
+        val kinleyPrice: Int = 15*12
+
+        if(productName.equals("Coke")) {
+            txtUnitPrice.setText(cokePrice)
+            txtTotalPrice.setText((cokePrice * quantity.toInt()).toString())
+        }
+
+        if(productName.equals("Fanta")) {
+            txtUnitPrice.setText(fantaPrice)
+            txtTotalPrice.setText((fantaPrice * quantity.toInt()).toString())
+        }
+
+        if(productName.equals("Sprite")) {
+            txtUnitPrice.setText(spritePrice)
+            txtTotalPrice.setText((spritePrice * quantity.toInt()).toString())
+        }
 
 
+        if(productName.equals("Kinley")) {
+            txtUnitPrice.setText(kinleyPrice)
+            txtTotalPrice.setText((kinleyPrice * quantity.toInt()).toString())
+        }
+    }
 
 
 
@@ -186,5 +215,7 @@ class OrderActivity : AppCompatActivity() {
         txtDeadline.setText("")
         txtOptDesc.setText("")
         btnSubmit.setText("SUBMIT")
+        txtUnitPrice.setText("Unit Price: 0 BDT")
+        txtTotalPrice.setText("Total Price: 0 BDT")
     }
 }
